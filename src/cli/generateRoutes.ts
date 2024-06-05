@@ -22,8 +22,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.dynamicRoutes = void 0;
 exports.dynamicRoutes = ${JSON.stringify(routes, null, 2)};`;
 
-  console.log('CURRENT PATH: ', process.cwd());
-
   const pathToUpdate = `${process.cwd()}/node_modules/next-static-utils/dist/utils/dynamicRoutes.js`;
 
   fs.writeFileSync(pathToUpdate, routesFile);
@@ -41,6 +39,6 @@ const writeServeJson = (routes: string[]) => {
 const routeToRewrite = (route: string) => {
   return {
     source: route.replace(/\[([^\]]+)\]/g, ':$1'), // change to /user/:id format
-    destination: route.replace(/\[([^\]]+)\]/g, FALLBACK_STRING), // change to /user/fallback format
+    destination: route.replace(/\[([^\]]+)\]/g, FALLBACK_STRING) + '.html', // change to /user/fallback format
   };
 };
