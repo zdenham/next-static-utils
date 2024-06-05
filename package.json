@@ -9,8 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "next": "^14.2.3"
+  },
   "devDependencies": {
     "@types/node": "^20.14.2",
+    "next": "^14.2.3",
     "typescript": "^5.4.5"
   }
 }
