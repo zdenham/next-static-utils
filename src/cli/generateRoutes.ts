@@ -1,3 +1,4 @@
+import { FALLBACK_STRING } from '../utils/constants';
 import { getDynamicRoutes } from '../utils/getDynamicRoutes';
 import fs from 'fs';
 
@@ -30,8 +31,16 @@ exports.dynamicRoutes = ${JSON.stringify(routes, null, 2)};`;
 
 const writeServeJson = (routes: string[]) => {
   const serveJson = {
-    routes,
+    rewrites: routes.map(routeToRewrite),
   };
 
-  fs.writeFileSync('./serve.json', JSON.stringify(serveJson, null, 2));
+  const pathToUpdate = `${process.cwd()}/node_modules/next-static-utils/dist/utils/serve.json`;
+  fs.writeFileSync(pathToUpdate, JSON.stringify(serveJson, null, 2));
+};
+
+const routeToRewrite = (route: string) => {
+  return {
+    source: route.replace(/\[([^\]]+)\]/g, ':$1'), // change to /user/:id format
+    destination: route.replace(/\[([^\]]+)\]/g, FALLBACK_STRING), // change to /user/fallback format
+  };
 };
