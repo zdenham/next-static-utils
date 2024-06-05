@@ -8,11 +8,14 @@ export const generateRoutes = () => {
     console.log(route);
   }
 
-  const routesFile = `export const dynamicRoutes = ${JSON.stringify(
-    routes,
-    null,
-    2
-  )};`;
+  const routesFile = `"use strict";
+  Object.defineProperty(exports, "__esModule", { value: true });
+  exports.dynamicRoutes = void 0;
+  exports.dynamicRoutes = ${JSON.stringify(routes, null, 2)};`;
 
-  fs.writeFileSync('src/utils/dynamicRoutes.js', routesFile);
+  console.log('CURRENT PATH: ', process.cwd());
+
+  const pathToUpdate = `${process.cwd()}/node_modules/next-static-utils/utils/dynamicRoutes.js`;
+
+  fs.writeFileSync(pathToUpdate, routesFile);
 };

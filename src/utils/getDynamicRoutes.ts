@@ -19,8 +19,8 @@ export const getDynamicRoutes = () => {
 
   const allFiles = findAllFilesInFolder(appPath);
   const relativePaths = allFiles.map((file) => file.replace(appPath, ''));
-  const strippedRoutes = relativePaths.map(stripRoute);
-  const allDynamicRoutes = strippedRoutes.filter(isDynamicPage);
+  const dynamicPaths = relativePaths.filter(isDynamicPage);
+  const dynamicRoutes = dynamicPaths.map(stripRoute);
 
-  return allDynamicRoutes;
+  return dynamicRoutes;
 };

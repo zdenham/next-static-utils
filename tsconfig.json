@@ -8,7 +8,10 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "types": ["node"]
+    "types": ["node"],
+    "declaration": true, // Enable declaration file generation
+    "declarationMap": true, // Optional: Generate source maps for declarations
+    "emitDeclarationOnly": false // Ensure that both .js and .d.ts files are emitted
   },
   "include": ["src"],
   "exclude": ["node_modules"]
