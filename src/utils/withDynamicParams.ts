@@ -1,4 +1,4 @@
-const FALLBACK_STRING = 'next-static-fallback';
+import { FALLBACK_STRING } from './constants';
 
 const cannotDeduceErr =
   'Cannot deduce path, please provide a path to withDynamicParams';
@@ -7,9 +7,8 @@ const patternToMatch = /app\/(.*?)\.(tsx|js|jsx)/;
 
 export const withDynamicParams = (
   staticParamsFunc?: ParamsFunc,
-  path: string = getPathFromFileName()
+  path: string = getPathFromErrorStack()
 ): ParamsFunc => {
-  console.log('FILENAME: ', __filename);
   const fallbackParams = getFallbackParamsFromPath(path);
   return async () => {
     const staticParamsArr = staticParamsFunc ? await staticParamsFunc() : [];
