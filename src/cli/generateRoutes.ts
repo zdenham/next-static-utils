@@ -6,7 +6,10 @@ export const generateRoutes = () => {
   const routes = getDynamicRoutes();
   printRoutes(routes);
   writeRoutes(routes);
-  writeServeJson(routes);
+
+  const serverType = process.argv[3];
+
+  generateServerConfig(serverType, routes);
 };
 
 const printRoutes = (routes: string[]) => {
@@ -32,7 +35,7 @@ const writeServeJson = (routes: string[]) => {
     rewrites: routes.map(routeToRewrite),
   };
 
-  const pathToUpdate = `${process.cwd()}/node_modules/next-static-utils/dist/utils/serve.json`;
+  const pathToUpdate = `${process.cwd()}/serve.json`;
   fs.writeFileSync(pathToUpdate, JSON.stringify(serveJson, null, 2));
 };
 
@@ -41,4 +44,17 @@ const routeToRewrite = (route: string) => {
     source: route.replace(/\[([^\]]+)\]/g, ':$1'), // change to /user/:id format
     destination: route.replace(/\[([^\]]+)\]/g, FALLBACK_STRING) + '.html', // change to /user/fallback format
   };
+};
+
+const generateServerConfig = (serverType: string, routes: string[]) => {
+  switch (serverType) {
+    case 'serve':
+      writeServeJson(routes);
+      break;
+    case 'cloudfront':
+      console.log('Cloudfront config generation not yet supported');
+      break;
+    default:
+      break;
+  }
 };
