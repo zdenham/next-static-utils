@@ -10,9 +10,51 @@
 
 ### Installation
 
-```pnpm install next-static-utils```
+```bash
+pnpm install next-static-utils
+...
+pnpm next-static-utils generate [cloudfront|serve]
+```
 
-###
+### Usage
+
+On your dynamic page:
+
+```javascript
+import { withDynamicParams } from 'next-static-utils';
+
+export const generateStaticParams = withDynamicParams();
+```
+
+To use the dynamic paramaters:
+
+```javascript
+'use client';
+
+import { useDynamicParams } from 'next-statis-utils';
+
+export default function Component() {
+  // pulls params /users/:id
+  const { id } = useDynamicParams();
+
+  return (
+    <div>
+      Hello
+    </div>
+  )
+}
+```
+
+### Recommended Next Config
+
+```javascript
+export default (phase) => {
+  const nextConfig = {
+    output: phase === 'phase-production-build' ? 'export' : 'standalone',
+  };
+  return nextConfig;
+};
+```
 
 ## Motivation
 
