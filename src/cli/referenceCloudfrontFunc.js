@@ -1,18 +1,25 @@
 const serveConfig = {
-  rewrites: [];
-}
+  rewrites: [],
+};
 
 function handler(event) {
   var request = event.request;
+  var response = event.response;
   var uri = request.uri;
+
+  if (response.status !== '404') {
+    return request;
+  }
 
   function isMatch(pattern, path) {
     // Escape any special regex characters in the pattern
     const escapedPattern = pattern.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-    
+
     // Replace variable segments with a regex pattern that matches any non-slash characters
-    const regexPattern = new RegExp('^' + escapedPattern.replace(/\\:([^/]+)/g, '([^/]+)') + '$');
-    
+    const regexPattern = new RegExp(
+      '^' + escapedPattern.replace(/\\:([^/]+)/g, '([^/]+)') + '$'
+    );
+
     return regexPattern.test(path);
   }
 

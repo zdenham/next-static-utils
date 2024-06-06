@@ -58,23 +58,16 @@ const generateServerConfig = (serverType: string, routes: string[]) => {
   }
 };
 
-const toReplace = `{
-  rewrites: [];
-}`;
-
 const writeCloudfrontConfig = (routes: string[]) => {
-  const serveJson = {
-    rewrites: routes.map(routeToRewrite),
-  };
+  const rewrites = routes.map(routeToRewrite);
 
   const cloudFuncStr = fs.readFileSync(
-    './referenceCloudfrontFunction.js',
+    `${process.cwd()}/node_modules/next-static-utils/dist/cli/referenceCloudfrontFunc.js`,
     'utf8'
   );
-  const cloudFunc = cloudFuncStr.replace(
-    toReplace,
-    JSON.stringify(serveJson, null, 2)
-  );
+  const cloudFunc = cloudFuncStr
+    .replace('[]', JSON.stringify(rewrites, null, 4))
+    .replace("'use strict';", '');
 
   const pathToUpdate = `${process.cwd()}/cloudfrontFunc.js`;
 
