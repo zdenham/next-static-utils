@@ -13,6 +13,7 @@
 ```bash
 pnpm install next-static-utils
 ...
+# Generates edge function for re-routing to a fallback page for dynamic params
 pnpm next-static-utils generate [cloudfront|serve]
 ```
 
@@ -23,6 +24,7 @@ On your dynamic page:
 ```javascript
 import { withDynamicParams } from 'next-static-utils';
 
+// creates fallback parameter page
 export const generateStaticParams = withDynamicParams();
 ```
 
@@ -34,7 +36,7 @@ To use the dynamic paramaters:
 import { useDynamicParams } from 'next-statis-utils';
 
 export default function Component() {
-  // pulls params /users/:id
+  // pulls params from the url, e.g. /users/:id
   const { id } = useDynamicParams();
 
   return (
@@ -72,7 +74,7 @@ Luckily, next.js offers an option for [static site generation](https://nextjs.or
 
 Next Static Utils aims to provide workarounds and utilities to address some of these issues and make hosting your next.js site statically a bit more enjoyable.
 
-### Who its for
+## Who its for
 
 - If you want to host your next.js app statically, **particularly using AWS S3 and Cloudfront and the new App Router**
 - If you have a separate backend and don't want high infra overhead or deep vendor lock-in for your front end hosting
@@ -81,7 +83,7 @@ Next Static Utils aims to provide workarounds and utilities to address some of t
 
 Private / auth gated applications, admin dashboards, simple tools, blogs & content sites with a relatively small catalog can all work.
 
-### How it works
+## How it works
 
 For every dynamic route, next static utils generates a fallback page which is served for dynamic routes, this also satisfies next.js's requirement to generate static params when using the `output: export` option.
 
@@ -89,7 +91,7 @@ Instead of using `useParams` which is not supported in SSG mode, the params are 
 
 The CLI also generates a cloudfront function to properly handle re-routing at an edge function level in AWS.
 
-### Other Cool / Related Projects
+## Other Cool / Related Projects
 
 - [next-nginx-routes](https://github.com/geops/next-nginx-routes) helps host your next.js static site using nginx routes
 - [SSG](https://ssg.dev) is great if you want to host on AWS, but with a more robust infrastructure
