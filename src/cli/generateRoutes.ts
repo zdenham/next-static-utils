@@ -8,7 +8,6 @@ export const generateRoutes = () => {
   writeRoutes(routes);
 
   const serverType = process.argv[3];
-
   generateServerConfig(serverType, routes);
 };
 
@@ -52,9 +51,32 @@ const generateServerConfig = (serverType: string, routes: string[]) => {
       writeServeJson(routes);
       break;
     case 'cloudfront':
-      console.log('Cloudfront config generation not yet supported');
+      writeCloudfrontConfig(routes);
       break;
     default:
       break;
   }
+};
+
+const toReplace = `{
+  rewrites: [];
+}`;
+
+const writeCloudfrontConfig = (routes: string[]) => {
+  const serveJson = {
+    rewrites: routes.map(routeToRewrite),
+  };
+
+  const cloudFuncStr = fs.readFileSync(
+    './referenceCloudfrontFunction.js',
+    'utf8'
+  );
+  const cloudFunc = cloudFuncStr.replace(
+    toReplace,
+    JSON.stringify(serveJson, null, 2)
+  );
+
+  const pathToUpdate = `${process.cwd()}/cloudfrontFunc.js`;
+
+  fs.writeFileSync(pathToUpdate, cloudFunc);
 };
