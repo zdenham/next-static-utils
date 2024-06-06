@@ -1,6 +1,6 @@
 {
   "name": "next-static-utils",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Utilities for hosting your next.js app as a static site",
   "main": "dist/index.js",
   "scripts": {

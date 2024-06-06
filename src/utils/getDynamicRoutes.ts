@@ -10,7 +10,9 @@ const isDynamicPage = (file: string) => {
 };
 
 const stripRoute = (route: string) => {
-  return route.replace(/\/page\.(js|jsx|tsx)$/, '');
+  const withoutPage = route.replace(/\/page\.(js|jsx|tsx)$/, '');
+  const withoutGrouping = withoutPage.replace(/\/\([^)]*\)/g, '');
+  return withoutGrouping;
 };
 
 export const getDynamicRoutes = () => {

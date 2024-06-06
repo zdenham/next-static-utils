@@ -22,7 +22,7 @@ export const parsePagePath = (pagePath: string): string => {
     throw new Error(cannotDeduceErr);
   }
 
-  return match[0].replace('app', '');
+  return match[0].replace('app', '').replace(/\/\([^)]*\)/g, '');
 };
 
 const getPathFromFileName = (): string => {
