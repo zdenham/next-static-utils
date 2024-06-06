@@ -67,7 +67,7 @@ const writeCloudfrontConfig = (routes: string[]) => {
   );
   const cloudFunc = cloudFuncStr
     .replace('[]', JSON.stringify(rewrites, null, 4))
-    .replace("'use strict';", '');
+    .replace('"use strict";', '');
 
   const pathToUpdate = `${process.cwd()}/cloudfrontFunc.js`;
 
