@@ -8,7 +8,7 @@
 
 # Set Up
 
-### Installation
+### Installation And CLI
 
 ```bash
 pnpm install next-static-utils
@@ -87,7 +87,7 @@ For every dynamic route, next static utils generates a fallback page which is se
 
 Instead of using `useParams` which is not supported in SSG mode, the params are parsed with a helper hook `useDynamicParams`
 
-The CLI also generates a cloudfront function to properly handle re-routing at an edge function level.
+The CLI also generates a cloudfront function to properly handle re-routing at an edge function level in AWS.
 
 # Other Cool / Related Projects
 
