@@ -9,7 +9,7 @@
 
 # Example Repo
 
-Check out the example repo [here](https://github.com/zdenham/next-static-aws-example) and the live [demo site](https://defn0rdp54dhd.cloudfront.net).
+Check out the example [repo](https://github.com/zdenham/next-static-aws-example) and the live [demo site](https://defn0rdp54dhd.cloudfront.net).
 
 # Set Up
 
