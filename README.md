@@ -3,7 +3,7 @@
     ⚡️ Next Static Utils ⚡️
   </b>
   <br/>
-  Utilities for hosting your next.js app as a static site
+  Utilities to host your next.js app as a static site, including dynamic routes and app router support
 </p>
 
 # Set Up
