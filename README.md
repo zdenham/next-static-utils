@@ -17,7 +17,9 @@ Next.js offers an option for [static site generation](https://nextjs.org/docs/pa
 
 **But it does not work with dynamic routes unless you generate all pages at build time**. Pages are also often not properly resolved on most hosting providers due to the way next.js does code splitting, leading to unwanted 404 errors. There are some discussions around these issues [here](https://github.com/vercel/next.js/discussions/55393#discussioncomment-9668219) and [here](https://github.com/vercel/next.js/discussions/64660#discussioncomment-9667981).
 
-Next Static Utils aims to provide workarounds and utilities to address some of these issues and make hosting your next.js site statically **anywhere** you darn well please a bit more enjoyable. We are starting with support for AWS S3 + Cloudfront, but can presumably add other providers relatively easily.
+Next Static Utils aims to provide workarounds and utilities to address some of these issues and make hosting your next.js site statically **anywhere** you darn well please a bit more enjoyable. 
+
+We are starting with support for AWS S3 + Cloudfront, but can presumably add other providers relatively easily.
 
 # Set Up
 
