@@ -97,6 +97,7 @@ The CLI also generates a cloudfront function to properly handle re-routing at an
 
 ## TODO
 
+- [ ] support partial static generation at build time
 - [ ] terraform script to deploy via cli
 - [ ] S3 static hosting rewrites support
 - [ ] Move to using routes.manifest instead of iterating over app directory?
