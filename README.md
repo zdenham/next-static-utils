@@ -1,9 +1,9 @@
 <p align="center">
-  <b>
+  <b style="font-size: 20px">
     ⚡️ Next Static Utils ⚡️
   </b>
   <br/>
-  Utilities to host your next.js app as a static site <br/>
+  Utilities to host your next.js app as a static site wherever your heart desires<br/>
   Including dynamic routes and app router support
 </p>
 
