@@ -91,3 +91,9 @@ The CLI also generates a cloudfront function to properly handle re-routing at an
 - [next-nginx-routes](https://github.com/geops/next-nginx-routes) helps host your next.js static site using nginx routes
 - [SSG](https://ssg.dev) is great if you want to host on AWS, but with a more robust infrastructure
 
+## TODO
+
+- [ ] terraform script to deploy via cli
+- [ ] S3 static hosting rewrites support
+- [ ] GCloud support?
+- [ ] Github pages support?
