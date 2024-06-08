@@ -13,7 +13,7 @@ Check out the example [repo](https://github.com/zdenham/next-static-aws-example)
 
 ## Motivation
 
-Next.js offers an option for [static site generation](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation), which allows you to export your site as raw html, js, etc... and host it statically on a CDN, or however you like! This is a great option that reduces the infra overhead of your application.
+Next.js offers an option for [static site generation](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation), which allows you to export your site as raw html, js, etc... and host it statically on a CDN, or however you like! This reduces the infra overhead of your application, if you are willing to sacrifice SSR features.
 
 **But SSG does not work with dynamic routes unless you generate all pages at build time**. There are some discussions around this issue [here](https://github.com/vercel/next.js/discussions/55393#discussioncomment-9668219) and [here](https://github.com/vercel/next.js/discussions/64660#discussioncomment-9667981), which the Vercel team will hopefully resolve soon. But even so, most static hosting providers outside of Vercel don't know how to handle the way next.js does code splitting out of the box, which can lead to unwanted 404 errors.
 
